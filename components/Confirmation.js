@@ -13,12 +13,11 @@ import {
   makeStyles,
 } from '@material-ui/core';
 import { useState } from 'react';
-// import ModelViewer from './ModelViewer';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const ModelViewer = dynamic(() => import('./ModelViewer'));
+const ModelViewer = dynamic(() => import('./ModelViewer'), { ssr: false });
 
 const useStyles = makeStyles((theme) => ({
   root: {

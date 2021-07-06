@@ -10,8 +10,10 @@ import {
   colors,
   makeStyles,
 } from '@material-ui/core';
-import LazyCardGrid from './LazyCardGrid';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
+
+const LazyCardGrid = dynamic(() => import('./LazyCardGrid'), { ssr: false });
 
 const useStyles = makeStyles({
   root: { position: 'relative' },

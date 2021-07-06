@@ -8,9 +8,11 @@ import {
   makeStyles,
 } from '@material-ui/core';
 import { useState } from 'react';
-import LazyCardGrid from './LazyCardGrid';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import moment from 'moment';
+
+const LazyCardGrid = dynamic(() => import('./LazyCardGrid'), { ssr: false });
 
 const useStyles = makeStyles(theme => ({
   card: { height: 160 },

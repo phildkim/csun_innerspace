@@ -48,10 +48,6 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const sleep = () => new Promise((resolve) => {
-  setTimeout(() => { resolve(); }, 1000);
-});
-
 export default function BaseContainer(props) {
   const classes = useStyles();
   const router = useRouter();
@@ -73,10 +69,10 @@ export default function BaseContainer(props) {
     e.preventDefault();
     deleteCookie('jwt');
     router.push('/home');
-  }, []);
+  }, [router]);
 
   return (
-    <Container className={ classes.root } { ...props } maxWidth="lg">
+    <Container className={ classes.root } { ...props }>
       <LoginModal open={ showModal } onClose={ () => closeModal() } />
       <AppBar position="sticky">
         <Toolbar>
@@ -85,8 +81,6 @@ export default function BaseContainer(props) {
               <Typography className={ classes.title }>Innerspace</Typography>
             </a>
           </Link>
-          <div className={ classes.spacer } />
-            <pre>{ ` USER: ${user}` }</pre>
           <div className={ classes.spacer } />
           { !user && <>
             <Button type="submit" color="inherit" onClick={ handleLogin }>Login</Button>
