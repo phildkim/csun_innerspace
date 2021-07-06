@@ -70,7 +70,7 @@ export default function MainPage(props) {
         </Tabs>
       </AppBar>
       <TabPanel value={ value } index={ 0 }>
-        <Home intro={ 'Welcome to Innerspace!' } />
+        <Home intro={ 'Welcome to Innerspace!' } username={ 'username: kc' } password={'password: pass'}/>
       </TabPanel>
       <TabPanel value={ value } index={ 1 }>
         <About intro={ 'About Innerspace!' } />
