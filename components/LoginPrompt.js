@@ -263,12 +263,12 @@ export default function LoginPrompt(props) {
             }
           </div>
           <div className={ classes.buttonCenter }>
-            {/* <ReCAPTCHA
+            <ReCAPTCHA
               sitekey={ GOOGLE_API_KEY }
               ref={ recaptchaRef }
               onChange={ handleCaptcha }
               style={ { display: "inline-block" } }
-            /><br /> */}
+            /><br />
             <Button
               className={ classes.button }
               onClick={ onClose }
