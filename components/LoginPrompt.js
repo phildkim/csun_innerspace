@@ -30,6 +30,8 @@ import { useRouter } from 'next/router';
 import { useCookies } from 'react-cookie';
 import ReCAPTCHA from 'react-google-recaptcha';
 
+const SITE_KEY = '6LeW2psaAAAAAIrP4hzE0yDrAcs2I_djLcl61I4h';
+
 const useStyles = makeStyles((theme) => ({
   loginBox: {
     minWidth: 500,
@@ -262,7 +264,7 @@ export default function LoginPrompt(props) {
           </div>
           <div className={ classes.buttonCenter }>
             <ReCAPTCHA
-              sitekey={ '6LeW2psaAAAAAIrP4hzE0yDrAcs2I_djLcl61I4h' }
+              sitekey={ SITE_KEY }
               ref={ recaptchaRef }
               onChange={ handleCaptcha }
               style={ { display: "inline-block" } }
