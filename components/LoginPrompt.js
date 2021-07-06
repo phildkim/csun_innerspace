@@ -30,7 +30,6 @@ import { useRouter } from 'next/router';
 import { useCookies } from 'react-cookie';
 import ReCAPTCHA from 'react-google-recaptcha';
 
-const SITE_KEY = '6LeW2psaAAAAAIrP4hzE0yDrAcs2I_djLcl61I4h';
 
 const useStyles = makeStyles((theme) => ({
   loginBox: {
@@ -89,9 +88,6 @@ export default function LoginPrompt(props) {
   const [cookies, setCookie] = useCookies();
   const [tab, setTab] = useState(props.initialTab || 'login');
   const [loading, setLoading] = useState(false);
-
-
-
   const [valid, setValid] = useState(false);
   const [captcha, setCaptcha] = useState(false);
   const [error, setError] = useState('');
@@ -184,16 +180,16 @@ export default function LoginPrompt(props) {
     }
   };
 
-  async function handleCaptcha(token) {
+  async function handleReCaptcha(token) {
     try {
-      const res = await fetch('/api/auth/login', {
+      const res = await fetch('/api/auth/captcha', {
         headers: { 'Content-Type': 'application/json' },
         method: 'POST',
         body: JSON.stringify({ token })
       });
-      const { error } = await res.json();
-      (!res.ok) ? setError(error) : setCaptcha(!captcha);
-    } catch(err) {
+      const data = await res.json();
+      (!data.result) ? setError(data.err) : setCaptcha(!captcha);
+    } catch (err) {
       setError(err);
     }
   };
@@ -264,11 +260,10 @@ export default function LoginPrompt(props) {
           </div>
           <div className={ classes.buttonCenter }>
             <ReCAPTCHA
-              sitekey={ SITE_KEY }
               ref={ recaptchaRef }
-              onChange={ handleCaptcha }
+              sitekey={ `${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}` }
               style={ { display: "inline-block" } }
-            /><br />
+              onChange={ handleReCaptcha } /><br />
             <Button
               className={ classes.button }
               onClick={ onClose }
@@ -280,7 +275,7 @@ export default function LoginPrompt(props) {
             <Button
               ref={ btnSubmit }
               className={ classes.button }
-              disabled={ loading }
+              disabled={ !captcha }
               variant="contained"
               color="primary"
               type="submit"
