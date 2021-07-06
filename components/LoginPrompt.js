@@ -69,8 +69,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const GOOGLE_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
-
 const sleep = () => new Promise((resolve) => {
   setTimeout(() => { resolve(); }, 1000);
 });
@@ -264,7 +262,7 @@ export default function LoginPrompt(props) {
           </div>
           <div className={ classes.buttonCenter }>
             <ReCAPTCHA
-              sitekey={ GOOGLE_API_KEY }
+              sitekey={ process.env.NEXT_PUBLIC_GOOGLE_API_KEY }
               ref={ recaptchaRef }
               onChange={ handleCaptcha }
               style={ { display: "inline-block" } }

@@ -1,4 +1,3 @@
-const SECRET_GOOGLE_KEY = process.env.SECRET_GOOGLE_API_KEY;
 
 export default async function handler(req, res) {
   if (req.method !== 'POST')
@@ -10,7 +9,7 @@ export default async function handler(req, res) {
     const { token } = req.body;
     if (!token)
       return res.status(400).json({ error: 'Captcha Token Missing' });
-    const response = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${SECRET_GOOGLE_KEY}&response=${token}`, {
+    const response = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.SECRET_GOOGLE_API_KEY}&response=${token}`, {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
       }, method: 'POST',
