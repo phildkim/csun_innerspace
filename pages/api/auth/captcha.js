@@ -1,4 +1,4 @@
-
+const SECRET = '6LfmKKEaAAAAABLcvd6ywpWHK4tp0Ts4ziZB9hBc';
 export default async function handler(req, res) {
   if (req.method !== 'POST')
     return res.status(400).json({ error: 'unsupported_method' });
@@ -11,7 +11,7 @@ export default async function handler(req, res) {
         'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
       },
       method: 'POST',
-      body: `secret=${process.env.SECRET_GOOGLE_API_KEY}&response=${token}`
+      body: `secret=${SECRET}&response=${token}`
     }).then(res => res.json())
       .then(json => json.success)
       .catch(err => {

@@ -261,7 +261,7 @@ export default function LoginPrompt(props) {
           <div className={ classes.buttonCenter }>
             <ReCAPTCHA
               ref={ recaptchaRef }
-              sitekey={ `${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}` }
+              sitekey="6LfmKKEaAAAAALbImk_0pLk1HGS8SHe_uJiKjfXP"
               style={ { display: "inline-block" } }
               onChange={ handleReCaptcha } /><br />
             <Button
