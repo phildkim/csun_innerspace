@@ -262,7 +262,7 @@ export default function LoginPrompt(props) {
           </div>
           <div className={ classes.buttonCenter }>
             <ReCAPTCHA
-              sitekey={ `6LeW2psaAAAAAIrP4hzE0yDrAcs2I_djLcl61I4h` }
+              sitekey={ '6LeW2psaAAAAAIrP4hzE0yDrAcs2I_djLcl61I4h' }
               ref={ recaptchaRef }
               onChange={ handleCaptcha }
               style={ { display: "inline-block" } }
